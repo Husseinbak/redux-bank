@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deposit, payLoan, requestLoan, withdraw } from "./accountSlice";
+import {
+  convertingCurrency,
+  deposit,
+  payLoan,
+  requestLoan,
+  withdraw,
+} from "./accountSlice";
 
 function AccountOperations() {
   const {
@@ -19,6 +25,8 @@ function AccountOperations() {
     if (!depositAmount) return;
 
     dispatch(deposit(depositAmount, currency));
+    // dispatch(deposit(depositAmount));
+    dispatch(convertingCurrency());
     setDepositAmount("");
     setCurrency("USD");
   }
